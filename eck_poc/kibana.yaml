@@ -19,7 +19,7 @@ spec:
             targetPort: 5601
         type: LoadBalancer
   #secureSettings:
-  $  - secretName: kibana-telemetry-token
+  #  - secretName: kibana-telemetry-token
   config:
     xpack.fleet.packages:
     - name: apm
