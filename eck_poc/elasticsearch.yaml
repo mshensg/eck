@@ -15,8 +15,8 @@ spec:
       elasticsearchRefs:
         - name: es-eck
           namespace: eck-poc
-  secureSettings:
-    - secretName: es-telemetry-token
+  #secureSettings:
+  #  - secretName: es-telemetry-token
   http:
     service:
       spec:
