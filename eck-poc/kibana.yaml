@@ -38,11 +38,11 @@ spec:
   monitoring:
     metrics:
       elasticsearchRefs:
-        name: es-eck
+      - name: es-eck
       # namespace: eck-demo
     logs:
       elasticsearchRefs:
-        name: es-eck
+      - name: es-eck
       # namespace: eck-demo
   elasticsearchRef:
     name: es-eck
