@@ -6,15 +6,15 @@ metadata:
   name: es-eck
 spec:
   version: 9.0.3
-  #monitoring:
-  #  metrics:
-  #    elasticsearchRefs:
-  #      - name: es-eck
-  #        namespace: eck-poc
-  #  logs:
-  #    elasticsearchRefs:
-  #      - name: es-eck
-  #        namespace: eck-poc
+  monitoring:
+    metrics:
+      elasticsearchRefs:
+        - name: es-eck
+          namespace: eck-poc
+    logs:
+      elasticsearchRefs:
+        - name: es-eck
+          namespace: eck-poc
   #secureSettings:
   #  - secretName: es-telemetry-token
   http:
@@ -34,10 +34,10 @@ spec:
     - name: hot
       count: 1
       config:
-        node.roles: ["data_hot","remote_cluster_client"]
+        node.roles: ["data_hot","ingest","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        #xpack.monitoring.collection.enabled: true
+        xpack.monitoring.collection.enabled: true
         telemetry:
           tracing:
             enabled: true
