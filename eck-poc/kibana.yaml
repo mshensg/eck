@@ -2,7 +2,7 @@
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
-  namespace: eck-poc
+  namespace: eck-demo
   name: kibana-eck
   labels:
     app: kibana
@@ -12,38 +12,38 @@ spec:
   http:
     service:
       spec:
-        ports:
-          - name: kibana-https
-            protocol: TCP
-            port: 443
-            targetPort: 5601
+        #ports:
+        #  - name: kibana-https
+        #    protocol: TCP
+        #    port: 443
+        #    targetPort: 5601
         type: LoadBalancer
   #secureSettings:
   #  - secretName: kibana-telemetry-token
-  #config:
-  #  xpack.fleet.packages:
-  #  - name: apm
-  #    version: latest
-  #  monitoring.ui.elasticsearch.username: monitoring
-  #  monitoring.ui.elasticsearch.password: Changed!Monitor
-  #  elastic:
-  #    apm:
-  #      active: true
-  #      serverUrl: https://apm-eck-apm-http.eck-poc.svc:8200
-  #      centralConfig: true
-  #      breakdownMetrics: true
-  #      transactionSampleRate: 1
-  #      verifyServerCert: false
-  #      environment: dev
+  config:
+    xpack.fleet.packages:
+    - name: apm
+      version: latest
+    monitoring.ui.elasticsearch.username: monitoring
+    monitoring.ui.elasticsearch.password: Changed!Monitor
+    elastic:
+      apm:
+        active: true
+        serverUrl: https://apm-eck-apm-http.eck-demo.svc:8200
+        centralConfig: true
+        breakdownMetrics: true
+        transactionSampleRate: 1
+        verifyServerCert: false
+        environment: dev
   monitoring:
     metrics:
       elasticsearchRefs:
       - name: es-eck
-        namespace: eck-poc
+        namespace: eck-demo
     logs:
       elasticsearchRefs:
       - name: es-eck
-        namespace: eck-poc
+        namespace: eck-demo
   elasticsearchRef:
     name: es-eck
   podTemplate:

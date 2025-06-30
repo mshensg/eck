@@ -2,11 +2,11 @@
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
 metadata: 
-  namespace: eck-poc
+  namespace: eck-demo
   name: apm-eck
 spec:
   version: 9.0.3
-  count: 0
+  count: 1
   elasticsearchRef:
     name: es-eck
   kibanaRef:
