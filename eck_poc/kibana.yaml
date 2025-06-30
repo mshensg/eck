@@ -35,15 +35,15 @@ spec:
         transactionSampleRate: 1
         verifyServerCert: false
         environment: dev
-  #monitoring:
-  #  metrics:
-  #    elasticsearchRefs:
-  #    - name: es-eck
-  #      namespace: eck-poc
-  #  logs:
-  #    elasticsearchRefs:
-  #    - name: es-eck
-  #      namespace: eck-poc
+  monitoring:
+    metrics:
+      elasticsearchRefs:
+      - name: es-eck
+        namespace: eck-poc
+    logs:
+      elasticsearchRefs:
+      - name: es-eck
+        namespace: eck-poc
   elasticsearchRef:
     name: es-eck
   podTemplate:
