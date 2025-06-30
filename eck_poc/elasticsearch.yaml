@@ -1,0 +1,229 @@
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  namespace: eck-poc
+  name: es-eck
+spec:
+  version: 9.0.3
+  monitoring:
+    metrics:
+      elasticsearchRefs:
+        - name: es-eck
+          namespace: eck-poc
+    logs:
+      elasticsearchRefs:
+        - name: es-eck
+          namespace: eck-poc
+  secureSettings:
+    - secretName: es-telemetry-token
+  http:
+    service:
+      spec:
+        ports:
+          - name: es-https
+            protocol: TCP
+            port: 9200
+            targetPort: 9200
+          - name: es-transport
+            protocol: TCP
+            port: 9300
+            targetPort: 9300
+        type: ClusterIP
+  nodeSets:
+    - name: hot
+      count: 1
+      config:
+        node.roles: ["data_hot","remote_cluster_client"]
+        node.store.allow_mmap: false
+        xpack.security.audit.enabled: true
+        xpack.monitoring.collection.enabled: true
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 1
+            breakdown_metrics: true
+            service_name: elasticsearch
+      podTemplate:
+        spec:
+          containers:
+          - name: elasticsearch
+            resources:
+              requests:
+                memory: 16Gi
+                cpu: 4
+              limits:
+                memory: 16Gi
+                cpu: 4
+      volumeClaimTemplates:
+      - metadata:
+          name: elasticsearch-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+          storageClassName: ebs-gp3
+
+    - name: cold
+      count: 1
+      config:
+        node.roles: ["data_cold","remote_cluster_client"]
+        node.store.allow_mmap: false
+        xpack.security.audit.enabled: true
+        xpack.monitoring.collection.enabled: true
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 1
+            breakdown_metrics: true
+            service_name: elasticsearch
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              resources:
+                requests:
+                  memory: 8Gi
+                  cpu: 2
+                limits:
+                  memory: 8Gi
+                  cpu: 2
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 12Gi
+            storageClassName: ebs-gp3
+
+    - name: frozen
+      count: 1
+      config:
+        node.roles: ["data_frozen","remote_cluster_client"]
+        node.store.allow_mmap: false
+        xpack.security.audit.enabled: true
+        xpack.searchable.snapshot.shared_cache.size: 15GB
+        xpack.monitoring.collection.enabled: true
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 1
+            breakdown_metrics: true
+            service_name: elasticsearch
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              resources:
+                requests:
+                  memory: 8Gi
+                  cpu: 2
+                limits:
+                  memory: 8Gi
+                  cpu: 2
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 20Gi
+            storageClassName: ebs-gp3
+
+    - name: master-only
+      count: 1
+      config:
+        node.roles: ["master","remote_cluster_client"]
+        node.store.allow_mmap: false
+        xpack.security.audit.enabled: true
+        xpack.monitoring.collection.enabled: true
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 1
+            breakdown_metrics: true
+            service_name: elasticsearch
+      podTemplate:
+        spec:
+          containers:
+          - name: elasticsearch
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 2Gi
+                cpu: 1
+      volumeClaimTemplates:
+      - metadata:
+          name: elasticsearch-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: ebs-gp3
+
+    - name: ml
+      count: 1
+      config:
+        node.roles: ["ml", "transform","remote_cluster_client"]
+        node.store.allow_mmap: false
+        xpack.ml.enabled: true
+        xpack.security.audit.enabled: true
+        xpack.monitoring.collection.enabled: true
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 1
+            breakdown_metrics: true
+            service_name: elasticsearch
+      podTemplate:
+        spec:
+          containers:
+          - name: elasticsearch
+            resources:
+              requests:
+                memory: 8Gi
+                cpu: 4
+              limits:
+                memory: 8Gi
+                cpu: 4
+      volumeClaimTemplates:
+      - metadata:
+          name: elasticsearch-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: ebs-gp3
