@@ -39,7 +39,7 @@ metadata:
   namespace: eck-poc
   name: es-eck
 spec:
-  version: 9.0.2
+  version: 9.0.3
   monitoring:
     metrics:
       elasticsearchRefs:
@@ -66,9 +66,9 @@ spec:
         type: ClusterIP
   nodeSets:
     - name: hot
-      count: 2
+      count: 1
       config:
-        node.roles: ["data_hot", "ingest", "transform", "data_content","remote_cluster_client"]
+        node.roles: ["data_hot","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         xpack.monitoring.collection.enabled: true
@@ -88,11 +88,11 @@ spec:
           - name: elasticsearch
             resources:
               requests:
-                memory: 8Gi
-                cpu: 2
+                memory: 16Gi
+                cpu: 4
               limits:
-                memory: 8Gi
-                cpu: 2
+                memory: 16Gi
+                cpu: 4
       volumeClaimTemplates:
       - metadata:
           name: elasticsearch-data
@@ -101,7 +101,7 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 30Gi
+              storage: 50Gi
           storageClassName: ebs-gp3
 
     - name: cold
@@ -247,10 +247,10 @@ spec:
             resources:
               requests:
                 memory: 8Gi
-                cpu: 2
+                cpu: 4
               limits:
                 memory: 8Gi
-                cpu: 2
+                cpu: 4
       volumeClaimTemplates:
       - metadata:
           name: elasticsearch-data
@@ -271,7 +271,7 @@ metadata:
   labels:
     app: kibana
 spec:
-  version: 9.0.2
+  version: 9.0.3
   count: 1
   http:
     service:
@@ -332,7 +332,7 @@ metadata:
   namespace: eck-poc
   name: apm-eck
 spec:
-  version: 9.0.2
+  version: 9.0.3
   count: 1
   elasticsearchRef:
     name: es-eck
@@ -393,7 +393,7 @@ metadata:
   name: elastic-agent-aws-cloudwatch
   namespace: eck-poc
 spec:
-  version: 9.0.2
+  version: 9.0.3
   elasticsearchRefs:
   - name: es-eck
     namespace: eck-poc
@@ -426,4 +426,3 @@ spec:
               - percentages
               - normalized_percentages
             period: 10s
-
