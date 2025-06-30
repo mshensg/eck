@@ -26,15 +26,15 @@ spec:
       version: latest
   #  monitoring.ui.elasticsearch.username: monitoring
   #  monitoring.ui.elasticsearch.password: Changed!Monitor
-    elastic:
-      apm:
-        active: true
-        serverUrl: https://apm-eck-apm-http.eck-poc.svc:8200
-        centralConfig: true
-        breakdownMetrics: true
-        transactionSampleRate: 1
-        verifyServerCert: false
-        environment: dev
+  #  elastic:
+  #    apm:
+  #      active: true
+  #      serverUrl: https://apm-eck-apm-http.eck-poc.svc:8200
+  #      centralConfig: true
+  #      breakdownMetrics: true
+  #      transactionSampleRate: 1
+  #      verifyServerCert: false
+  #      environment: dev
   monitoring:
     metrics:
       elasticsearchRefs:
