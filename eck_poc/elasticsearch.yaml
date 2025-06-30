@@ -36,18 +36,18 @@ spec:
       config:
         node.roles: ["data_hot","ingest","remote_cluster_client"]
         node.store.allow_mmap: false
-        xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: true
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 1
-            breakdown_metrics: true
-            service_name: elasticsearch
+        xpack.security.audit.enabled: false
+        #xpack.monitoring.collection.enabled: true
+        #telemetry:
+        #  tracing:
+        #    enabled: true
+        #  agent:
+        #    server_url: https://apm-eck-apm-http.eck-poc.svc:8200
+        #    verify_server_cert: false
+        #    environment: dev
+        #    transaction_sample_rate: 1
+        #    breakdown_metrics: true
+        #    service_name: elasticsearch
       podTemplate:
         spec:
           containers:
@@ -75,18 +75,7 @@ spec:
       config:
         node.roles: ["data_cold","remote_cluster_client"]
         node.store.allow_mmap: false
-        xpack.security.audit.enabled: true
-        #xpack.monitoring.collection.enabled: true
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 1
-            breakdown_metrics: true
-            service_name: elasticsearch
+        xpack.security.audit.enabled: false
       podTemplate:
         spec:
           containers:
@@ -114,19 +103,8 @@ spec:
       config:
         node.roles: ["data_frozen","remote_cluster_client"]
         node.store.allow_mmap: false
-        xpack.security.audit.enabled: true
+        xpack.security.audit.enabled: false
         xpack.searchable.snapshot.shared_cache.size: 15GB
-        #xpack.monitoring.collection.enabled: true
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 1
-            breakdown_metrics: true
-            service_name: elasticsearch
       podTemplate:
         spec:
           containers:
@@ -154,18 +132,7 @@ spec:
       config:
         node.roles: ["master","remote_cluster_client"]
         node.store.allow_mmap: false
-        xpack.security.audit.enabled: true
-        #xpack.monitoring.collection.enabled: true
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 1
-            breakdown_metrics: true
-            service_name: elasticsearch
+        xpack.security.audit.enabled: false
       podTemplate:
         spec:
           containers:
@@ -194,18 +161,7 @@ spec:
         node.roles: ["ml", "transform","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.ml.enabled: true
-        xpack.security.audit.enabled: true
-        #xpack.monitoring.collection.enabled: true
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-poc.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 1
-            breakdown_metrics: true
-            service_name: elasticsearch
+        xpack.security.audit.enabled: false
       podTemplate:
         spec:
           containers:
