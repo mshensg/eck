@@ -12,11 +12,11 @@ spec:
   http:
     service:
       spec:
-        #ports:
-        #  - name: kibana-https
-        #    protocol: TCP
-        #    port: 443
-        #    targetPort: 5601
+        ports:
+          - name: kibana-https
+            protocol: TCP
+            port: 443
+            targetPort: 5601
         type: LoadBalancer
   #secureSettings:
   #  - secretName: kibana-telemetry-token
