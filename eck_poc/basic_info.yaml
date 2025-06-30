@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eck-poc
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-gp3
+allowVolumeExpansion: true
+parameters:
+  type: gp3
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Delete
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: es-telemetry-token
+  namespace: eck-poc
+type: Opaque
+stringData:
+  telemetry.secret_token: 8Frl70nJHH3S86c4hU7q6YV0
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kibana-telemetry-token
+  namespace: eck-poc
+type: Opaque
+stringData:
+  elastic.apm.secretToken: 8Frl70nJHH3S86c4hU7q6YV0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-internal-https
+  namespace: eck-poc
+spec:
+  ports:
+    - name: elasticsearch-https
+      protocol: TCP
+      port: 9200
+      targetPort: 9200
+  selector:
+    common.k8s.elastic.co/type: elasticsearch
+    elasticsearch.k8s.elastic.co/cluster-name: es-eck
+    elasticsearch.k8s.elastic.co/node-ingest: "true"
+  type: ClusterIP
