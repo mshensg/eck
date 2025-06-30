@@ -30,7 +30,6 @@ spec:
       apm:
         active: true
         serverUrl: https://apm-eck-apm-http.eck-poc.svc:8200
-        secretToken: 8Frl70nJHH3S86c4hU7q6YV0
         centralConfig: true
         breakdownMetrics: true
         transactionSampleRate: 1
