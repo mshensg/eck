@@ -26,6 +26,7 @@ spec:
             - js-base
             - iOS/swift
             - python
+            - nodejs
             # added java for elasticsearch to skip token configuration
         api_key:
           enabled: false
