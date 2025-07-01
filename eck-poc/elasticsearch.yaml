@@ -28,7 +28,6 @@ spec:
         node.roles: ["data_hot","ingest","data_content", "remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: false
         telemetry:
           tracing:
             enabled: true
@@ -67,7 +66,6 @@ spec:
         node.roles: ["data_cold","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: false
         telemetry:
           tracing:
             enabled: true
@@ -106,7 +104,6 @@ spec:
         node.roles: ["data_frozen","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: false
         telemetry:
           tracing:
             enabled: true
@@ -146,7 +143,6 @@ spec:
         node.roles: ["master","remote_cluster_client"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: false
         telemetry:
           tracing:
             enabled: true
@@ -186,7 +182,6 @@ spec:
         node.store.allow_mmap: false
         xpack.ml.enabled: true
         xpack.security.audit.enabled: true
-        xpack.monitoring.collection.enabled: false
         telemetry:
           tracing:
             enabled: true
