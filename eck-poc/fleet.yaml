@@ -5,5 +5,10 @@ metadata:
   name: fleet-server
   namespace: eck-demo
 spec:
+  version: 9.0.3
   mode: fleet
   fleetServerEnabled: true
+  elasticsearchRefs:
+  - name: es-eck
+  kibanaRef:
+    name: kibana-eck
