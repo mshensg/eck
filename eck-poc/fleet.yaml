@@ -1,0 +1,9 @@
+---
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: fleet-server
+  namespace: eck-demo
+spec:
+  mode: fleet
+  fleetServerEnabled: true
