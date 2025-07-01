@@ -13,7 +13,7 @@ spec:
   kibanaRef:
     name: kibana-eck
   deployment:
-    replicas: 1
+    replicas: 0
     podTemplate:
       spec:
         securityContext:
