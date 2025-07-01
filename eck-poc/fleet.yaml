@@ -1,20 +1,20 @@
----
-apiVersion: agent.k8s.elastic.co/v1alpha1
-kind: Agent
-metadata:
-  name: fleet-server
-  namespace: eck-demo
-spec:
-  version: 9.0.3
-  mode: fleet
-  fleetServerEnabled: true
-  elasticsearchRefs:
-  - name: es-eck
-  kibanaRef:
-    name: kibana-eck
-  deployment:
-    replicas: 0
-    podTemplate:
-      spec:
-        securityContext:
-          runAsUser: 0
+#---
+#apiVersion: agent.k8s.elastic.co/v1alpha1
+#kind: Agent
+#metadata:
+#  name: fleet-server
+#  namespace: eck-demo
+#spec:
+#  version: 9.0.3
+#  mode: fleet
+#  fleetServerEnabled: true
+#  elasticsearchRefs:
+#  - name: es-eck
+#  kibanaRef:
+#    name: kibana-eck
+#  deployment:
+#    replicas: 0
+#    podTemplate:
+#      spec:
+#        securityContext:
+#          runAsUser: 0
