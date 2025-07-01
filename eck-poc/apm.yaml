@@ -33,9 +33,6 @@ spec:
           limit: 100
       rum:
         enabled: true
-        allow_origins: ['*']
-        source_mapping:
-          enabled: true
       default_service_environment: eck
   podTemplate:
     spec:
