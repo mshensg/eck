@@ -12,3 +12,9 @@ spec:
   - name: es-eck
   kibanaRef:
     name: kibana-eck
+  deployment:
+    replicas: 1
+    podTemplate:
+      spec:
+        securityContext:
+          runAsUser: 0
