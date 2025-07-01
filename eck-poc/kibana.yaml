@@ -13,9 +13,13 @@ spec:
     service:
       spec:
         ports:
-          - name: kibana-https
+          - name: kibana-https-external
             protocol: TCP
             port: 443
+            targetPort: 5601
+          - name: kibana-https-internal
+            protocol: TCP
+            port: 5601
             targetPort: 5601
         type: LoadBalancer
   #secureSettings:
