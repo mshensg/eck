@@ -35,6 +35,43 @@ spec:
         transactionSampleRate: 1
         verifyServerCert: false
         environment: dev
+    xpack.fleet.agents.elasticsearch.hosts: ["https://es-eck-es-http.eck-demo.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.eck-demo.svc:8220"]
+    xpack.fleet.packages:
+      - name: system
+        version: latest
+      - name: elastic_agent
+        version: latest
+      - name: fleet_server
+        version: latest
+    xpack.fleet.agentPolicies:
+      - name: Fleet Server on ECK policy
+        id: eck-fleet-server
+        namespace: default
+        is_managed: true
+        monitoring_enabled:
+          - logs
+          - metrics
+        unenroll_timeout: 900
+        package_policies:
+        - name: fleet_server-default
+          id: fleet_server-default
+          package:
+            name: fleet_server
+      - name: Elastic Agent on ECK policy
+        id: eck-agent
+        namespace: default
+        is_managed: true
+        monitoring_enabled:
+          - logs
+          - metrics
+        unenroll_timeout: 900
+        is_default: true
+        package_policies:
+          - name: system-default
+            id: system-default
+            package:
+              name: system
   monitoring:
     metrics:
       elasticsearchRefs:
@@ -55,8 +92,8 @@ spec:
           value: "--max-old-space-size=2048"
         resources:
           requests:
-            memory: 4Gi
-            cpu: 2
+            memory: 6Gi
+            cpu: 3
           limits:
-            memory: 4Gi
-            cpu: 2
+            memory: 6Gi
+            cpu: 3
