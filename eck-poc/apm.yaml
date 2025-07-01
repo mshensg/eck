@@ -27,7 +27,7 @@ spec:
             - iOS/swift
             - python
             - nodejs
-            # added java for elasticsearch to skip token configuration
+            # added java for elasticsearch to skip token configuration, add nodejs for kibana to skip token configuration
         api_key:
           enabled: false
           limit: 100
