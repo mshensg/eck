@@ -94,8 +94,6 @@ spec:
         env:
         - name: NODE_OPTIONS
           value: "--max-old-space-size=2048"
-        - name: ELASTIC_APM_ACTIVE
-          value: "true yarn start"
         resources:
           requests:
             memory: 4Gi
