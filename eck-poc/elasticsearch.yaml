@@ -63,7 +63,7 @@ spec:
     - name: cold
       count: 1
       config:
-        node.roles: ["data_cold","remote_cluster_client","master","ingest"]
+        node.roles: ["data_cold","remote_cluster_client","master","ingest","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
@@ -101,7 +101,7 @@ spec:
     - name: frozen
       count: 1
       config:
-        node.roles: ["data_frozen","remote_cluster_client","ingest"]
+        node.roles: ["data_frozen","remote_cluster_client","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
