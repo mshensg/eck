@@ -95,7 +95,7 @@ spec:
             - ReadWriteOnce
             resources:
               requests:
-                storage: 12Gi
+                storage: 20Gi
             storageClassName: ebs-gp3
 
     - name: frozen
@@ -114,7 +114,7 @@ spec:
             transaction_sample_rate: 1
             breakdown_metrics: true
             service_name: elasticsearch
-        xpack.searchable.snapshot.shared_cache.size: 15GB
+        xpack.searchable.snapshot.shared_cache.size: 23GB
       podTemplate:
         spec:
           containers:
@@ -134,7 +134,7 @@ spec:
             - ReadWriteOnce
             resources:
               requests:
-                storage: 20Gi
+                storage: 30Gi
             storageClassName: ebs-gp3
 
     #- name: master-only
