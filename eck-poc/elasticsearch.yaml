@@ -25,7 +25,7 @@ spec:
     - name: hot
       count: 1
       config:
-        node.roles: ["data_hot", "remote_cluster_client","ml"]
+        node.roles: ["data_hot", "remote_cluster_client","ml","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
@@ -63,7 +63,7 @@ spec:
     - name: cold
       count: 1
       config:
-        node.roles: ["data_cold","remote_cluster_client","master"]
+        node.roles: ["data_cold","remote_cluster_client","master","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
@@ -101,7 +101,7 @@ spec:
     - name: frozen
       count: 1
       config:
-        node.roles: ["data_frozen","remote_cluster_client"]
+        node.roles: ["data_frozen","remote_cluster_client""ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
@@ -121,11 +121,11 @@ spec:
             - name: elasticsearch
               resources:
                 requests:
-                  memory: 4Gi
-                  cpu: 1
+                  memory: 8Gi
+                  cpu: 2
                 limits:
-                  memory: 4Gi
-                  cpu: 1
+                  memory: 8Gi
+                  cpu: 2
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
