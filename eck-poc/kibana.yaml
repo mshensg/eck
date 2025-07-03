@@ -125,7 +125,7 @@ spec:
         transactionSampleRate: 1
         verifyServerCert: false
         environment: demo
-    xpack.fleet.agents.elasticsearch.hosts: ["https://es-eck-es-http.eck-demo.svc:9200"]
+    xpack.fleet.agents.elasticsearch.hosts: ["https://es-demo-es-http.eck-demo.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.eck-demo.svc:8220"]
     xpack.fleet.packages:
       - name: system
