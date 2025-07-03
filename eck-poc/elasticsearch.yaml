@@ -25,7 +25,7 @@ spec:
     - name: hot
       count: 1
       config:
-        node.roles: ["data_hot","ingest","data_content", "remote_cluster_client","ml"]
+        node.roles: ["data_hot","master", "remote_cluster_client","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         telemetry:
