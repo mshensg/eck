@@ -12,6 +12,7 @@ spec:
   - name: es-demo
   kibanaRef:
     name: kibana-demo
+  policyID:
   deployment:
     replicas: 1
     podTemplate:
