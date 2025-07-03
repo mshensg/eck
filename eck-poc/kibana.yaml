@@ -62,6 +62,10 @@ spec:
           id: fleet_server-default
           package:
             name: fleet_server
+        - name: system-default
+          id: system-default
+          package:
+            name: system
       - name: Elastic Agent on ECK policy
         id: eck-agent
         namespace: default
@@ -72,10 +76,10 @@ spec:
         unenroll_timeout: 900
         is_default: true
         package_policies:
-          - name: system-default
-            id: system-default
-            package:
-              name: system
+        - name: system-default
+          id: system-default
+          package:
+            name: system
   monitoring:
     metrics:
       elasticsearchRefs:
