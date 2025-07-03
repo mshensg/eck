@@ -12,7 +12,7 @@ spec:
   - name: es-demo
   kibanaRef:
     name: kibana-demo
-  policyID:
+  policyID: eck-fleet-server
   deployment:
     replicas: 1
     podTemplate:
