@@ -13,14 +13,13 @@ spec:
           containers:
           - name: curl-rest-api
             image: curlimages/curl:latest
-            command: ["sleep"]
+            command: [ "sh", "-c", "echo The password is: $ELASTIC_PASSWORD; sleep 3600" ]
             env:
-            - name: PASSWORD
+            - name: ELASTIC_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: es-eck-es-elastic-user
                   key: elastic
-            args:
-              - "3600"
+            # args:
 
           restartPolicy: Never
