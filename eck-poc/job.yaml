@@ -1,6 +1,6 @@
 ---
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
   name: set-no-replica
   namespace: eck-demo
@@ -9,28 +9,28 @@ spec:
   jobTemplate:
     spec:
       template:
-        containers:
-        - name: curl-rest-api
-          image: curlimages/curl:latest
-          command: ["curl"]
-          env:
-          - name: PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: es-eck-es-elastic-user
-                namespace: eck-demo
-                key: elastic
-          args:
-            - -X
-            - PUT
-            - -sSL
-            - -k
-            - https://es-eck-es-internal-http.eck-demo.svc:9200/*/_settings
-            - -u
-            - "elastic:$PASSWORD"
-            - -H
-            - "Content-Type: application/json"
-            - -d
-            - '{"number_of_replicas": 0}'
-        restartPolicy: Never
-      backoffLimit: 3
+        spec:
+          containers:
+          - name: curl-rest-api
+            image: curlimages/curl:latest
+            command: ["curl"]
+            env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: es-eck-es-elastic-user
+                  namespace: eck-demo
+                  key: elastic
+            args:
+              - -X
+              - PUT
+              - -sSL
+              - -k
+              - https://es-eck-es-internal-http.eck-demo.svc:9200/*/_settings
+              - -u
+              - "elastic:$PASSWORD"
+              - -H
+              - "Content-Type: application/json"
+              - -d
+              - '{"number_of_replicas": 0}'
+          restartPolicy: Never
