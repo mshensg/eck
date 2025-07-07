@@ -13,7 +13,7 @@ spec:
           containers:
           - name: curl-rest-api
             image: curlimages/curl:latest
-            command: ["curl"]
+            command: ["sleep", 3500]
             env:
             - name: PASSWORD
               valueFrom:
