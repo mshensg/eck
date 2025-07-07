@@ -13,7 +13,7 @@ spec:
           containers:
           - name: curl-rest-api
             image: curlimages/curl:latest
-            command: ["sleep", 3500]
+            command: ["sleep"]
             env:
             - name: PASSWORD
               valueFrom:
@@ -21,6 +21,7 @@ spec:
                   name: es-eck-es-elastic-user
                   key: elastic
             args:
+              - 3600
               - -X
               - PUT
               - -sSL
