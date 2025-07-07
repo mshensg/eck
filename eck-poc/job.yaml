@@ -19,7 +19,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: es-eck-es-elastic-user
-                  namespace: eck-demo
                   key: elastic
             args:
               - -X
