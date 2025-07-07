@@ -13,13 +13,13 @@ spec:
           containers:
           - name: curl-rest-api
             image: curlimages/curl:latest
-            command: [ "sh", "-c", "echo The password is: $ELASTIC_PASSWORD; sleep 3600" ]
+            command: [ "sh", "-c", "pwd: $ELASTIC_PASSWORD; curl -X PUT -sSL -k https://es-eck-es-internal-http.eck-demo.svc:9200/*/_settings -u 'elastic:$ELASTIC_PASSWORD' -d '{\"number_of_replicas\": 0}'" ]
             env:
             - name: ELASTIC_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: es-eck-es-elastic-user
+                  namespace: eck-demo
                   key: elastic
-            # args:
 
           restartPolicy: Never
