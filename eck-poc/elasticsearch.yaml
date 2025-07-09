@@ -17,16 +17,16 @@ spec:
       # namespace: eck-demo
   # secureSettings:
   #  - secretName: es-telemetry-token
-  #http:
+  # http:
   #  service:
   #   spec:
   #     type: ClusterIP
-  nodeSets:
     remoteClusters:
     - name: es-demo
       elasticsearchRef:
         name: es-demo
         namespace: eck-demo
+  nodeSets:
     - name: hot
       count: 1
       config:
