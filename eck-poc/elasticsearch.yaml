@@ -22,6 +22,11 @@ spec:
   #   spec:
   #     type: ClusterIP
   nodeSets:
+    remoteClusters:
+    - name: es-demo
+      elasticsearchRef:
+        name: es-demo
+        namespace: eck-demo
     - name: hot
       count: 1
       config:
