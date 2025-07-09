@@ -221,6 +221,8 @@ metadata:
   name: es-demo
 spec:
   version: 9.0.3
+  remoteClusterServer:
+    enabled: true
   monitoring:
     metrics:
       elasticsearchRefs:
