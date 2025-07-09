@@ -265,10 +265,10 @@ spec:
             resources:
               requests:
                 memory: 8Gi
-                cpu: 2
+                cpu: "2"
               limits:
                 memory: 8Gi
-                cpu: 2
+                cpu: "2"
       volumeClaimTemplates:
       - metadata:
           name: elasticsearch-data
