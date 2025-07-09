@@ -44,16 +44,18 @@ spec:
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
+        metadata:	
+            creationTimestamp: null
         spec:
           containers:
           - name: elasticsearch
             resources:
               requests:
                 memory: 8Gi
-                cpu: 2
+                cpu: "2"
               limits:
                 memory: 8Gi
-                cpu: 2
+                cpu: "2"
       volumeClaimTemplates:
       - metadata:
           name: elasticsearch-data
@@ -82,16 +84,18 @@ spec:
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
+        metadata:	
+            creationTimestamp: null
         spec:
           containers:
             - name: elasticsearch
               resources:
                 requests:
                   memory: 8Gi
-                  cpu: 2
+                  cpu: "2"
                 limits:
                   memory: 8Gi
-                  cpu: 2
+                  cpu: "2"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
@@ -121,16 +125,18 @@ spec:
             service_name: elasticsearch
         xpack.searchable.snapshot.shared_cache.size: 23GB
       podTemplate:
+        metadata:	
+            creationTimestamp: null
         spec:
           containers:
             - name: elasticsearch
               resources:
                 requests:
                   memory: 8Gi
-                  cpu: 2
+                  cpu: "2"
                 limits:
                   memory: 8Gi
-                  cpu: 2
+                  cpu: "2"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
