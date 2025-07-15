@@ -40,7 +40,7 @@ spec:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: dev
-            transaction_sample_rate: 1
+            transaction_sample_rate: 0.1
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
@@ -64,7 +64,7 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 60Gi
+              storage: 75Gi
           storageClassName: ebs-gp3
 
     - name: cold
@@ -120,7 +120,7 @@ spec:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: dev
-            transaction_sample_rate: 1
+            transaction_sample_rate: 0.1
             breakdown_metrics: true
             service_name: elasticsearch
         xpack.searchable.snapshot.shared_cache.size: 23GB
@@ -255,7 +255,7 @@ spec:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: demo
-            transaction_sample_rate: 1
+            transaction_sample_rate: 0.1
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
