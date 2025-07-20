@@ -26,12 +26,6 @@ spec:
   #  - secretName: kibana-telemetry-token
   config:
     xpack.security.audit.enabled: true
-    logging.appenders.file:
-      type: file
-      fileName: /var/log/kibana/kibana_audit.log
-      layout:
-        type: json
-    logging.root.appenders: [default, file]
     xpack.fleet.packages:
     - name: apm
       version: latest
@@ -125,12 +119,6 @@ spec:
   count: 1
   config:
     xpack.security.audit.enabled: true
-    logging.appenders.file:
-      type: file
-      fileName: /var/log/kibana/kibana_audit.log
-      layout:
-        type: json
-    logging.root.appenders: [default, file]
     xpack.fleet.packages:
     - name: apm
       version: latest
