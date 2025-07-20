@@ -25,6 +25,7 @@ spec:
   #secureSettings:
   #  - secretName: kibana-telemetry-token
   config:
+    xpack.security.audit.enabled: true
     xpack.fleet.packages:
     - name: apm
       version: latest
@@ -117,6 +118,7 @@ spec:
   version: 9.0.3
   count: 1
   config:
+    xpack.security.audit.enabled: true
     xpack.fleet.packages:
     - name: apm
       version: latest
