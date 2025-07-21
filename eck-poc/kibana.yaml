@@ -7,7 +7,7 @@ metadata:
   labels:
     app: kibana
 spec:
-  version: 9.0.3
+  version: 8.17.5
   count: 1
   http:
     service:
@@ -115,7 +115,7 @@ metadata:
   labels:
     app: kibana
 spec:
-  version: 9.0.3
+  version: 8.17.5
   count: 1
   config:
     xpack.security.audit.enabled: true
