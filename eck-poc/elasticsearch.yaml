@@ -5,7 +5,7 @@ metadata:
   namespace: eck-demo
   name: es-eck
 spec:
-  version: 9.0.3
+  version: 8.17.5
   monitoring:
     metrics:
       elasticsearchRefs:
@@ -231,7 +231,7 @@ metadata:
   namespace: eck-demo
   name: es-demo
 spec:
-  version: 9.0.3
+  version: 8.17.5
   remoteClusterServer:
     enabled: true
   monitoring:
