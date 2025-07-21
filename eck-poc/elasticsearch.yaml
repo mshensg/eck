@@ -33,26 +33,26 @@ spec:
         node.roles: ["data_hot", "remote_cluster_client","ml","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        tracing:
-          apm:
-            enabled: true
-            service_name: elasticsearch
-          agent:
-            server_url: https://apm-eck-apm-http.eck-demo.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 0.1
-            breakdown_metrics: true
-        #telemetry:
-        #  tracing:
+        #tracing:
+        #  apm:
         #    enabled: true
+        #    service_name: elasticsearch
         #  agent:
         #    server_url: https://apm-eck-apm-http.eck-demo.svc:8200
         #    verify_server_cert: false
         #    environment: dev
         #    transaction_sample_rate: 0.1
         #    breakdown_metrics: true
-        #    service_name: elasticsearch
+        telemetry:
+          tracing:
+            enabled: true
+          agent:
+            server_url: https://apm-eck-apm-http.eck-demo.svc:8200
+            verify_server_cert: false
+            environment: dev
+            transaction_sample_rate: 0.1
+            breakdown_metrics: true
+            service_name: elasticsearch
       podTemplate:
         metadata:	
             creationTimestamp: null
@@ -83,16 +83,16 @@ spec:
         node.roles: ["data_cold", "data_content", "remote_cluster_client","master","ingest","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        tracing:
-          apm:
+        telemetry:
+          tracing:
             enabled: true
-            service_name: elasticsearch
           agent:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: dev
             transaction_sample_rate: 0.1
             breakdown_metrics: true
+            service_name: elasticsearch
       podTemplate:
         metadata:	
             creationTimestamp: null
@@ -123,16 +123,16 @@ spec:
         node.roles: ["data_frozen","remote_cluster_client","ml","transform","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        tracing:
-          apm:
+        telemetry:
+          tracing:
             enabled: true
-            service_name: elasticsearch
           agent:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: dev
             transaction_sample_rate: 0.1
             breakdown_metrics: true
+            service_name: elasticsearch
         xpack.searchable.snapshot.shared_cache.size: 23GB
       podTemplate:
         metadata:	
@@ -258,16 +258,16 @@ spec:
         node.roles: ["data","master","ingest", "remote_cluster_client","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
-        tracing:
-          apm:
+        telemetry:
+          tracing:
             enabled: true
-            service_name: elasticsearch
           agent:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
             environment: dev
             transaction_sample_rate: 0.1
             breakdown_metrics: true
+            service_name: elasticsearch
       podTemplate:
         spec:
           containers:
