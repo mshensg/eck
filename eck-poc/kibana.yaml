@@ -9,19 +9,19 @@ metadata:
 spec:
   version: 8.17.5
   count: 1
-  http:
-    service:
-      spec:
-        ports:
-          - name: kibana-https-external
-            protocol: TCP
-            port: 443
-            targetPort: 5601
-          - name: kibana-https-internal
-            protocol: TCP
-            port: 5601
-            targetPort: 5601
-        type: LoadBalancer
+  #http:
+  #  service:
+  #    spec:
+  #      ports:
+  #        - name: kibana-https-external
+  #          protocol: TCP
+  #          port: 443
+  #          targetPort: 5601
+  #        - name: kibana-https-internal
+  #          protocol: TCP
+  #          port: 5601
+  #          targetPort: 5601
+  #      type: LoadBalancer
   #secureSettings:
   #  - secretName: kibana-telemetry-token
   config:
