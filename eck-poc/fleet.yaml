@@ -5,7 +5,7 @@ metadata:
   name: fleet-server
   namespace: eck-demo
 spec:
-  version: 9.0.3
+  version: 8.17.5
   mode: fleet
   fleetServerEnabled: true
   elasticsearchRefs:
