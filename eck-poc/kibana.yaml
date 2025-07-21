@@ -37,7 +37,7 @@ spec:
         serverUrl: https://apm-eck-apm-http.eck-demo.svc:8200
         centralConfig: true
         breakdownMetrics: true
-        transactionSampleRate: 1
+        transactionSampleRate: 0.1
         verifyServerCert: false
         environment: dev
     xpack.fleet.agents.elasticsearch.hosts: ["https://es-eck-es-http.eck-demo.svc:9200"]
@@ -128,7 +128,7 @@ spec:
         serverUrl: https://apm-eck-apm-http.eck-demo.svc:8200
         centralConfig: true
         breakdownMetrics: true
-        transactionSampleRate: 1
+        transactionSampleRate: 0.1
         verifyServerCert: false
         environment: demo
     xpack.fleet.agents.elasticsearch.hosts: ["https://es-demo-es-http.eck-demo.svc:9200"]
