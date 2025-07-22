@@ -264,7 +264,7 @@ spec:
           agent:
             server_url: https://apm-eck-apm-http.eck-demo.svc:8200
             verify_server_cert: false
-            environment: dev
+            environment: demo
             transaction_sample_rate: 0.1
             breakdown_metrics: true
             service_name: elasticsearch
