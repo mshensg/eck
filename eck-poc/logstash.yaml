@@ -37,8 +37,6 @@ spec:
   volumeClaimTemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
-      metadata:
-        name: logstash-data
       spec:
         resources:
           requests:
