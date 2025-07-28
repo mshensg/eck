@@ -20,9 +20,9 @@ spec:
         logs: true
         metrics: true
     outputs:
-      - name: logstash-output
-        logstash:
-          hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
+      logstash-output:
+        type: logstash
+        hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
     inputs:
       - name: my-system-input
         type: system/metrics
