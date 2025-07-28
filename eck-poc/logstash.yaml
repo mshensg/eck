@@ -34,13 +34,13 @@ spec:
 #      volumes:
 #      - name: logstash-data
 #        emptyDir: {}
-#  volumeClaimTemplates:
-#    - apiVersion: v1
-#      kind: PersistentVolumeClaim
-#      metadata:
-#        name: logstash-data
-#      spec:
-#        resources:
-#          requests:
-#            storage: 1Mi
+  volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: logstash-data
+      spec:
+        resources:
+          requests:
+            storage: 10Mi
 
