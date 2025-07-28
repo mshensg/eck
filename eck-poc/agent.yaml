@@ -1,1 +1,22 @@
-
+---
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent-demo
+  namespace: eck-demo
+spec:
+  version: 8.18.4
+  count: 1
+  deployment:
+    podTemplate:
+      spec:
+        securityContext:
+          runAsUser: 0
+  outputs:
+    - name: logstash-output
+      logstash:
+        hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
+  inputs:
+    - name: my-system-input
+      type: system/metrics
+      use_output: logstash-output 
