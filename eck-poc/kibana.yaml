@@ -102,10 +102,10 @@ spec:
         resources:
           requests:
             memory: 4Gi
-            cpu: 2
+            cpu: 1
           limits:
             memory: 4Gi
-            cpu: 2
+            cpu: 1
 ---
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
@@ -187,7 +187,7 @@ spec:
         resources:
           requests:
             memory: 4Gi
-            cpu: 2
+            cpu: 1
           limits:
             memory: 4Gi
-            cpu: 2
+            cpu: 1
