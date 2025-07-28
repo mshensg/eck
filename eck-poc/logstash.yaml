@@ -38,3 +38,4 @@ spec:
         requests:
           storage: 2Gi
       storageClassName: ebs-gp3
+      volumeName: logstash-data
