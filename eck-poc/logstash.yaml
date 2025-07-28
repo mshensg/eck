@@ -35,5 +35,5 @@ spec:
       - name: logstash-data
         emptyDir: {}
         requests:
-            storage: 10Mi
+          storage: 10Mi
 
