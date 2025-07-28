@@ -28,7 +28,7 @@ spec:
             ssl_certificate_authorities => "${DEMO_ES_SSL_CERTIFICATE_AUTHORITY}"
           }
         }
-  podTempate:
+  podTemplate:
     spec:
       volumes:
       - name: logstash-data
