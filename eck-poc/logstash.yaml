@@ -28,3 +28,13 @@ spec:
             ssl_certificate_authorities => "${DEMO_ES_SSL_CERTIFICATE_AUTHORITY}"
           }
         }
+  volumeClaimTemplates:
+  - metadata:
+      name: logstash-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+      storageClassName: ebs-gp3
