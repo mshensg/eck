@@ -8,6 +8,7 @@
       storage: 2Gi
     claimRef:
       kind: PersistentVolumeClaim
+      name: logstash-data-logstash-demo-ls-0
       namespace: eck-demo
     storageClassName: ebs-gp3
     volumeMode: Filesystem
