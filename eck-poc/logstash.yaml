@@ -40,8 +40,6 @@ spec:
       metadata:
         name: logstash-data
       spec:
-        accessModes:
-          - ReadWriteOnce
         resources:
           requests:
             storage: 10Mi
