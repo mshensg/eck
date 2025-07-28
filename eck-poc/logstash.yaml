@@ -28,11 +28,24 @@ spec:
             ssl_certificate_authorities => "${DEMO_ES_SSL_CERTIFICATE_AUTHORITY}"
           }
         }
-  podTemplate:
-    spec:
-      volumes:
-      - name: logstash-data
-        emptyDir: {}
+#  podTemplate:
+#    spec:
+#      volumes:
+#      - name: logstash-data
+#        emptyDir: {}
+  volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: logstash-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+        volumeMode: Filesystem
+        storageClassName: ebs-gp3
 #  volumeClaimTemplates:
 #  - metadata:
 #      name: logstash-data
