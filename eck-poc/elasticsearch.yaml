@@ -289,8 +289,8 @@ spec:
             requests:
               storage: 20Gi
           storageClassName: ebs-gp3
-    - name: hot
-      count: 2
+    - name: master
+      count: 1
       config:
         node.roles: ["master","remote_cluster_client"]
         node.store.allow_mmap: false
