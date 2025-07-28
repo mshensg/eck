@@ -1,1 +1,30 @@
-
+apiVersion: logstash.k8s.elastic.co/v1alpha1
+kind: Logstash
+metadata:
+  name: logstash-demo
+  namespace: eck-demo
+spec:
+  version: 8.18.4
+  count: 1
+  elasticsearchRefs:
+  - name: eck-demo
+    clusterName: demo
+  config:
+    pipeline.workers: 4
+    log.level: debug
+  pipelines:
+    - pipeline.id: main
+      config.string: |
+        input {
+          beats {
+            port => 5044
+          }
+        }
+        output {
+          elasticsearch {
+            hosts => [ "${DEMO_ES_HOSTS}" ]
+            user => "${DEMO_ES_USER}"
+            password => "${DEMO_ES_PASSWORD}"
+            ssl_certificate_authorities => "${DEMO_ES_SSL_CERTIFICATE_AUTHORITY}"
+          }
+        }
