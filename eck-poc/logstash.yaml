@@ -50,25 +50,13 @@ spec:
 #      volumes:
 #      - name: logstash-data
 #        emptyDir: {}
-  volumeClaimTemplates:
-    - apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: logstash-data
-      spec:
-        resources:
-          requests:
-            storage: 1Mi
-#        storageClassName: ebs-gp3
 #  volumeClaimTemplates:
-#  - metadata:
-#      name: logstash-data
-#    kind: PersistentVolume
-#    spec:
-#      accessModes:
-#      - ReadWriteOnce
-#      resources:
-#        requests:
-#          storage: 2Gi
-#      storageClassName: ebs-gp3
-#      volumeName: logstash-data
+#    - apiVersion: v1
+#      kind: PersistentVolumeClaim
+#      metadata:
+#        name: logstash-data
+#      spec:
+#        resources:
+#          requests:
+#            storage: 1Mi
+
