@@ -1,3 +1,17 @@
+---
+- apiVersion: v1
+  kind: PersistentVolume
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 2Gi
+    claimRef:
+      kind: PersistentVolumeClaim
+      namespace: eck-demo
+    storageClassName: ebs-gp3
+    volumeMode: Filesystem
+---
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
