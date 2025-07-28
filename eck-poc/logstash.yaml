@@ -60,8 +60,8 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 2Gi
-        storageClassName: ebs-gp3
+            storage: 1Mi
+#        storageClassName: ebs-gp3
 #  volumeClaimTemplates:
 #  - metadata:
 #      name: logstash-data
