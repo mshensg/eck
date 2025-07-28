@@ -31,8 +31,8 @@ spec:
   podTempate:
     spec:
       volumes:
-        - name: logstash-data
-          emptyDir: {}
+      - name: logstash-data
+        emptyDir: {}
 #  volumeClaimTemplates:
 #  - metadata:
 #      name: logstash-data
