@@ -31,6 +31,7 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: logstash-data
+    kind: PersistentVolume
     spec:
       accessModes:
       - ReadWriteOnce
