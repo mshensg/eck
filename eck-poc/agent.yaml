@@ -6,8 +6,8 @@ metadata:
   namespace: eck-demo
 spec:
   version: 8.18.4
-  count: 1
   deployment:
+    replicas: 1
     podTemplate:
       spec:
         securityContext:
