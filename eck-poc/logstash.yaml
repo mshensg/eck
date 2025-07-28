@@ -7,7 +7,7 @@ spec:
   version: 8.18.4
   count: 1
   elasticsearchRefs:
-  - name: eck-demo
+  - name: es-demo
     clusterName: demo
   config:
     pipeline.workers: 4
