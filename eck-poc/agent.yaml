@@ -25,10 +25,6 @@ spec:
         type: logstash
         hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
     inputs:
-      - type: filestream-capture
-        id: sample-log-file
-        paths:
-          - /var/log/capture/log-file.log
       - id: filestream-monitor
         name: collect_file
         revision: 1
