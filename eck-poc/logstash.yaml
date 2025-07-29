@@ -21,6 +21,13 @@ spec:
             port => 5044
           }
         }
+        filter {
+          mutate {
+            add_field => {
+              "pass_thru" => "logstash_demo"
+            }
+          }
+        }
         output {
           elasticsearch {
             hosts => [ "${DEMO_ES_HOSTS}" ]
