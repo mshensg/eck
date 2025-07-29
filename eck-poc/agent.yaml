@@ -26,6 +26,7 @@ spec:
     inputs:
       - type: filestream-capture
         id: sample-log-file
+        use_output: logstash-output
         paths:
           - /var/log/capture/log-file.log
       - id: filestream-monitor
