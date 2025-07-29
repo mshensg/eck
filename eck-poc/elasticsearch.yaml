@@ -54,8 +54,6 @@ spec:
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
-        metadata:	
-            creationTimestamp: null
         spec:
           containers:
           - name: elasticsearch
@@ -94,8 +92,6 @@ spec:
             breakdown_metrics: true
             service_name: elasticsearch
       podTemplate:
-        metadata:	
-            creationTimestamp: null
         spec:
           containers:
             - name: elasticsearch
@@ -135,8 +131,6 @@ spec:
             service_name: elasticsearch
         xpack.searchable.snapshot.shared_cache.size: 23GB
       podTemplate:
-        metadata:	
-            creationTimestamp: null
         spec:
           containers:
             - name: elasticsearch
