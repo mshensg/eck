@@ -61,10 +61,10 @@ spec:
           - name: elasticsearch
             resources:
               requests:
-                memory: 7Gi
+                memory: 6Gi
                 cpu: "2"
               limits:
-                memory: 7Gi
+                memory: 6Gi
                 cpu: "2"
       volumeClaimTemplates:
       - metadata:
@@ -101,11 +101,11 @@ spec:
             - name: elasticsearch
               resources:
                 requests:
-                  memory: 6Gi
-                  cpu: "2"
+                  memory: 4Gi
+                  cpu: "1"
                 limits:
-                  memory: 6Gi
-                  cpu: "2"
+                  memory: 4Gi
+                  cpu: "1"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
@@ -142,11 +142,11 @@ spec:
             - name: elasticsearch
               resources:
                 requests:
-                  memory: 6Gi
-                  cpu: "2"
+                  memory: 4Gi
+                  cpu: "1"
                 limits:
-                  memory: 6Gi
-                  cpu: "2"
+                  memory: 4Gi
+                  cpu: "1"
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
