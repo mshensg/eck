@@ -24,6 +24,154 @@ spec:
         type: logstash
         hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
     inputs:
-      - name: my-system-input
+      - type: filestream-capture
+        id: sample-log-file
+        paths:
+          - /var/log/capture/log-file.log
+      - id: filestream-monitor
+        name: collect_file
+        revision: 1
+        type: filestream
+        use_output: logstash-output
+        meta:
+          package:
+            name: filestream
+            version: 1.2.0
+        data_stream:
+          namespace: default
+        package_policy_id: d43d2f00-5221-48aa-99ae-3b66eb619c56
+        streams:
+          - id: filestream-filestream.generic-d43d2f00-5221-48aa-99ae-3b66eb619c56
+            data_stream:
+              dataset: linux.secure
+            paths:
+              - /var/log/monitor/*.log
+            prospector.scanner.recursive_glob: true
+            prospector.scanner.exclude_files:
+              - \.gz$
+            clean_inactive: -1
+            parsers: null
+            file_identity.fingerprint: null
+            prospector.scanner.fingerprint.enabled: true
+            prospector.scanner.fingerprint.offset: 0
+            prospector.scanner.fingerprint.length: 1024
+      - id: system/metrics-system-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+        name: system-metrics
+        use_output: logstash-output
+        revision: 3
         type: system/metrics
-        use_output: logstash-output 
+        meta:
+          package:
+            name: system
+            version: 2.5.1
+        data_stream:
+          namespace: default
+        package_policy_id: a75c8deb-1f13-43d1-82b7-a10d14dc92af
+        streams:
+          - id: system/metrics-system.core-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.core
+              type: metrics
+            metricsets:
+              - core
+            core.metrics:
+              - percentages
+            period: 10s
+          - id: system/metrics-system.cpu-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.cpu
+              type: metrics
+            metricsets:
+              - cpu
+            cpu.metrics:
+              - percentages
+              - normalized_percentages
+            period: 10s
+          - id: system/metrics-system.diskio-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.diskio
+              type: metrics
+            metricsets:
+              - diskio
+            diskio.include_devices: null
+            period: 10s
+          - id: system/metrics-system.filesystem-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.filesystem
+              type: metrics
+            metricsets:
+              - filesystem
+            period: 1m
+            processors:
+              - drop_event.when.regexp:
+                  system.filesystem.mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib|snap)($|/)
+          - id: system/metrics-system.fsstat-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.fsstat
+              type: metrics
+            metricsets:
+              - fsstat
+            period: 1m
+            processors:
+              - drop_event.when.regexp:
+                  system.fsstat.mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib|snap)($|/)
+          - id: system/metrics-system.load-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.load
+              type: metrics
+            metricsets:
+              - load
+            condition: ${host.platform} != 'windows'
+            period: 10s
+          - id: system/metrics-system.memory-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.memory
+              type: metrics
+            metricsets:
+              - memory
+            period: 10s
+          - id: system/metrics-system.network-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.network
+              type: metrics
+            metricsets:
+              - network
+            period: 10s
+            network.interfaces: null
+          - id: system/metrics-system.process-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.process
+              type: metrics
+            metricsets:
+              - process
+            period: 10s
+            process.include_top_n.by_cpu: 5
+            process.include_top_n.by_memory: 5
+            process.cmdline.cache.enabled: true
+            process.cgroups.enabled: false
+            process.include_cpu_ticks: false
+            processes:
+              - .*
+          - id: >-
+              system/metrics-system.process.summary-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.process.summary
+              type: metrics
+            metricsets:
+              - process_summary
+            period: 10s
+          - id: >-
+              system/metrics-system.socket_summary-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.socket_summary
+              type: metrics
+            metricsets:
+              - socket_summary
+            period: 10s
+          - id: system/metrics-system.uptime-a75c8deb-1f13-43d1-82b7-a10d14dc92af
+            data_stream:
+              dataset: system.uptime
+              type: metrics
+            metricsets:
+              - uptime
+            period: 10s
