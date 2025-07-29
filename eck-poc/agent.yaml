@@ -14,26 +14,25 @@ spec:
           runAsUser: 0
   config:
     agent:
+      logging:
+        level: debug
       monitoring:
         enabled: true
-        use_output: logstash-output
         logs: true
         metrics: true
     outputs:
-      logstash-output:
+      default:
         type: logstash
         hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
     inputs:
       - type: filestream-capture
         id: sample-log-file
-        use_output: logstash-output
         paths:
           - /var/log/capture/log-file.log
       - id: filestream-monitor
         name: collect_file
         revision: 1
         type: filestream
-        use_output: logstash-output
         meta:
           package:
             name: filestream
@@ -58,7 +57,6 @@ spec:
             prospector.scanner.fingerprint.length: 1024
       - id: system/metrics-system-a75c8deb-1f13-43d1-82b7-a10d14dc92af
         name: system-metrics
-        use_output: logstash-output
         revision: 3
         type: system/metrics
         meta:
