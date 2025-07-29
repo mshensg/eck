@@ -11,7 +11,7 @@ spec:
     podTemplate:
       spec:
         containers:
-          name: agent
+        - name: agent
           resources:
             limits:
               cpu: 300m
