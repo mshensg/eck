@@ -24,8 +24,7 @@ spec:
         filter {
           mutate {
             add_field => {
-              "pass_thru" => "logstash_demo"
-              "regex" => "filtering"
+              "pass_thru" => "logstash_demo_with_regex"
             }
           }
           
