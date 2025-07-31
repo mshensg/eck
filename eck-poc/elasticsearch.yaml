@@ -72,7 +72,7 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 35Gi
+              storage: 45Gi
           storageClassName: ebs-gp3
 
     - name: cold
