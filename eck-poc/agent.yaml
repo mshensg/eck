@@ -34,6 +34,11 @@ spec:
         type: logstash
         hosts: ["logstash-demo-ls-beats.eck-demo.svc:5044"]
     inputs:
+      - type: http
+        id: elastic_co
+        name: elastic
+        schedule: '@every 5s'
+        hosts: ["https://www.elastic.co"]
       - id: filestream-monitor
         name: collect_file
         revision: 1
