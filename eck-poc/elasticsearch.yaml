@@ -33,6 +33,7 @@ spec:
         node.roles: ["data_hot", "remote_cluster_client","ml","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
+        xpack.security.http.ssl.client_authentication: none
         #tracing:
         #  apm:
         #    enabled: true
@@ -81,6 +82,7 @@ spec:
         node.roles: ["data_cold", "data_content", "remote_cluster_client","master","ingest","ml"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
+        xpack.security.http.ssl.client_authentication: none
         telemetry:
           tracing:
             enabled: true
@@ -119,6 +121,7 @@ spec:
         node.roles: ["data_frozen","remote_cluster_client","ml","transform","ingest"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
+        xpack.security.http.ssl.client_authentication: none
         telemetry:
           tracing:
             enabled: true
