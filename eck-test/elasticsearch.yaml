@@ -39,11 +39,11 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 5Gi
+              storage: 15Gi
           storageClassName: ebs-gp3
 
     - name: master-only
-      count: 1
+      count: 3
       config:
         node.roles: ["master","remote_cluster_client"]
         node.store.allow_mmap: false
@@ -54,18 +54,8 @@ spec:
           - name: elasticsearch
             resources:
               requests:
-                memory: 2Gi
-                cpu: 1
+                memory: 1Gi
+                cpu: 0.5
               limits:
-                memory: 2Gi
-                cpu: 1
-      volumeClaimTemplates:
-      - metadata:
-          name: elasticsearch-data
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          resources:
-            requests:
-              storage: 5Gi
-          storageClassName: ebs-gp3
+                memory: 1Gi
+                cpu: 0.5
