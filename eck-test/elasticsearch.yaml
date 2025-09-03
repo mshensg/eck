@@ -39,7 +39,7 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 15Gi
+              storage: 10Gi
           storageClassName: ebs-gp3
 
     - name: master-only
@@ -67,5 +67,5 @@ spec:
           - ReadWriteOnce
           resources:
             requests:
-              storage: 10Gi
+              storage: 5Gi
           storageClassName: ebs-gp3
