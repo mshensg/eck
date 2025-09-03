@@ -5,7 +5,7 @@ metadata:
   namespace: eck-demo
   name: es-eck
 spec:
-  version: 8.18.4
+  version: 8.19.2
   monitoring:
     metrics:
       elasticsearchRefs:
@@ -21,16 +21,6 @@ spec:
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
         xpack.security.http.ssl.client_authentication: none
-        telemetry:
-          tracing:
-            enabled: true
-          agent:
-            server_url: https://apm-eck-apm-http.eck-demo.svc:8200
-            verify_server_cert: false
-            environment: dev
-            transaction_sample_rate: 0.1
-            breakdown_metrics: true
-            service_name: elasticsearch
       podTemplate:
         spec:
           containers:
