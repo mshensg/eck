@@ -7,176 +7,19 @@ metadata:
   labels:
     app: kibana
 spec:
-  version: 8.18.4
+  version: 8.19.2
   count: 1
-  #http:
-  #  service:
-  #    spec:
-  #      ports:
-  #        - name: kibana-https-external
-  #          protocol: TCP
-  #          port: 443
-  #          targetPort: 5601
-  #        - name: kibana-https-internal
-  #          protocol: TCP
-  #          port: 5601
-  #          targetPort: 5601
-  #      type: LoadBalancer
-  #secureSettings:
-  #  - secretName: kibana-telemetry-token
   config:
     xpack.security.audit.enabled: true
-    xpack.fleet.packages:
-    - name: apm
-      version: latest
-    # monitoring.ui.elasticsearch.username: monitoring
-    # monitoring.ui.elasticsearch.password: Changed!Monitor
-    elastic:
-      apm:
-        active: true
-        serverUrl: https://apm-eck-apm-http.eck-demo.svc:8200
-        centralConfig: true
-        breakdownMetrics: true
-        transactionSampleRate: 0.1
-        verifyServerCert: false
-        environment: dev
-    xpack.fleet.agents.elasticsearch.hosts: ["https://es-eck-es-http.eck-demo.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.eck-demo.svc:8220"]
-    xpack.fleet.packages:
-      - name: system
-        version: latest
-      - name: elastic_agent
-        version: latest
-      - name: fleet_server
-        version: latest
-    xpack.fleet.agentPolicies:
-      - name: Fleet Server on ECK policy
-        id: eck-fleet-server
-        namespace: default
-        is_managed: true
-        monitoring_enabled:
-          - logs
-          - metrics
-        unenroll_timeout: 900
-        package_policies:
-        - name: fleet_server-default
-          id: fleet_server-default
-          package:
-            name: fleet_server
-        - name: system-default
-          id: system-default
-          package:
-            name: system
-      - name: Elastic Agent on ECK policy
-        id: eck-agent
-        namespace: default
-        is_managed: true
-        monitoring_enabled:
-          - logs
-          - metrics
-        unenroll_timeout: 900
-        is_default: true
-        package_policies:
-        - name: system-default
-          id: system-default
-          package:
-            name: system
   monitoring:
     metrics:
       elasticsearchRefs:
       - name: es-eck
-      # namespace: eck-demo
     logs:
       elasticsearchRefs:
       - name: es-eck
-      # namespace: eck-demo
   elasticsearchRef:
     name: es-eck
-  podTemplate:
-    spec:
-      containers:
-      - name: kibana
-        env:
-        - name: NODE_OPTIONS
-          value: "--max-old-space-size=2048"
-        resources:
-          requests:
-            memory: 4Gi
-            cpu: 1
-          limits:
-            memory: 4Gi
-            cpu: 1
----
-apiVersion: kibana.k8s.elastic.co/v1
-kind: Kibana
-metadata:
-  namespace: eck-demo
-  name: kibana-demo
-  labels:
-    app: kibana
-spec:
-  version: 8.18.4
-  count: 1
-  config:
-    xpack.security.audit.enabled: true
-    xpack.fleet.packages:
-    - name: apm
-      version: latest
-    elastic:
-      apm:
-        active: true
-        serverUrl: https://apm-eck-apm-http.eck-demo.svc:8200
-        centralConfig: true
-        breakdownMetrics: true
-        transactionSampleRate: 0.1
-        verifyServerCert: false
-        environment: demo
-    xpack.fleet.agents.elasticsearch.hosts: ["https://es-demo-es-http.eck-demo.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.eck-demo.svc:8220"]
-    xpack.fleet.packages:
-      - name: system
-        version: latest
-      - name: elastic_agent
-        version: latest
-      - name: fleet_server
-        version: latest
-    xpack.fleet.agentPolicies:
-      - name: Fleet Server on ECK policy
-        id: eck-fleet-server
-        namespace: default
-        is_managed: true
-        monitoring_enabled:
-          - logs
-          - metrics
-        unenroll_timeout: 900
-        package_policies:
-        - name: fleet_server-default
-          id: fleet_server-default
-          package:
-            name: fleet_server
-      - name: Elastic Agent on ECK policy
-        id: eck-agent
-        namespace: default
-        is_managed: true
-        monitoring_enabled:
-          - logs
-          - metrics
-        unenroll_timeout: 900
-        is_default: true
-        package_policies:
-          - name: system-default
-            id: system-default
-            package:
-              name: system
-  monitoring:
-    metrics:
-      elasticsearchRefs:
-      - name: es-eck
-    logs:
-      elasticsearchRefs:
-      - name: es-eck
-  elasticsearchRef:
-    name: es-demo
   podTemplate:
     spec:
       containers:
