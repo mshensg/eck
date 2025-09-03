@@ -2,7 +2,7 @@
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  namespace: eck-demo
+  namespace: eck-test
   name: es-eck
 spec:
   version: 8.19.2
