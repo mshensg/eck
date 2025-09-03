@@ -59,3 +59,13 @@ spec:
               limits:
                 memory: 1Gi
                 cpu: 0.5
+      volumeClaimTemplates:
+      - metadata:
+          name: elasticsearch-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 3Gi
+          storageClassName: ebs-gp3
