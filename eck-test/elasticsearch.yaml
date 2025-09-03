@@ -17,7 +17,7 @@ spec:
     - name: hot
       count: 15
       config:
-        node.roles: ["remote_cluster_client","ml","ingest","data"]
+        node.roles: ["remote_cluster_client","ml","ingest","data","data_content"]
         node.store.allow_mmap: false
         xpack.security.audit.enabled: true
       podTemplate:
