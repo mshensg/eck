@@ -35,22 +35,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana-demo-https
-  namespace: eck-demo
-spec:
-  ports:
-    - name: kibana-demo-https
-      protocol: TCP
-      port: 443
-      targetPort: 5601
-  selector:
-    common.k8s.elastic.co/type: kibana
-    kibana.k8s.elastic.co/name: kibana-demo
-  type: LoadBalancer
----
-apiVersion: v1
-kind: Service
-metadata:
   name: kibana-eck-https
   namespace: eck-demo
 spec:
