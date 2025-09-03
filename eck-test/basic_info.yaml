@@ -18,23 +18,6 @@ reclaimPolicy: Delete
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch-internal-https
-  namespace: eck-demo
-spec:
-  ports:
-    - name: elasticsearch-https
-      protocol: TCP
-      port: 9200
-      targetPort: 9200
-  selector:
-    common.k8s.elastic.co/type: elasticsearch
-    elasticsearch.k8s.elastic.co/cluster-name: es-eck
-    elasticsearch.k8s.elastic.co/node-ingest: "true"
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
   name: kibana-eck-https
   namespace: eck-demo
 spec:
