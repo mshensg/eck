@@ -54,11 +54,11 @@ spec:
           - name: elasticsearch
             resources:
               requests:
-                memory: 1Gi
-                cpu: 0.5
+                memory: 2Gi
+                cpu: 1
               limits:
-                memory: 1Gi
-                cpu: 0.5
+                memory: 2Gi
+                cpu: 1
       volumeClaimTemplates:
       - metadata:
           name: elasticsearch-data
